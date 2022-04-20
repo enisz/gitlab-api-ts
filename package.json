@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Wrapper for Gitlab API written in typescript",
   "main": "./dist/index.js",
+  "homepage": "https://github.com/enisz/gitlab-api-ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enisz/gitlab-api-ts.git"
+  },
   "scripts": {
     "build": "rimraf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +15,14 @@
   "keywords": [
     "gitlab",
     "api",
-    "wrapper"
+    "wrapper",
+    "typescript"
   ],
-  "author": "",
+  "author": {
+    "name": "Enisz Abdalla",
+    "email": "enisz87@gmail.com",
+    "url": "https://github.com/enisz"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",
