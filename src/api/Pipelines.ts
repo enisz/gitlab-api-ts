@@ -19,9 +19,9 @@ export class Pipelines extends AbstractApiEndpoint {
      * @returns List of pipelines in project
      */
     public listProjectPipelines(options: ListProjectPipelinesOptions & PaginatedOptions): Promise<PaginatedResponse<Pipeline>> {
-        const { page, per_page, ...endpointOptions } = options;
+        const { id, page, per_page, ...endpointOptions } = options;
 
-        return this.getAxios().get<Pipeline[]>(`projects/${options.id}/pipelines${this.paginatedUrl(options)}`, { data: endpointOptions ? endpointOptions : undefined })
+        return this.getAxios().get<Pipeline[]>(`projects/${id}/pipelines`, { params: { page: page, per_page: per_page }, data: endpointOptions })
             .then((response: AxiosResponse<Pipeline[]>) => this.paginatedResult<Pipeline>(response.data, response.headers));
     }
 
@@ -31,7 +31,9 @@ export class Pipelines extends AbstractApiEndpoint {
      * @returns One pipeline
      */
     public getPipeline(options: GetPipelineOptions): Promise<SinglePipeline> {
-        return this.getAxios().get<SinglePipeline>(`projects/${options.id}/pipelines/${options.pipeline_id}`)
+        const { id, pipeline_id } = options;
+
+        return this.getAxios().get<SinglePipeline>(`projects/${id}/pipelines/${pipeline_id}`)
             .then((response: AxiosResponse<SinglePipeline>) => response.data);
     }
 
@@ -41,7 +43,9 @@ export class Pipelines extends AbstractApiEndpoint {
      * @returns Variables of a pipeline
      */
     public getPipelineVariables(options: GetPipelineVariablesOptions): Promise<PipelineVariables> {
-        return this.getAxios().get<PipelineVariables>(`projects/${options.id}/pipelines/${options.pipeline_id}/variables`)
+        const { id, pipeline_id } = options;
+
+        return this.getAxios().get<PipelineVariables>(`projects/${id}/pipelines/${pipeline_id}/variables`)
             .then((response: AxiosResponse<PipelineVariables>) => response.data);
     }
 

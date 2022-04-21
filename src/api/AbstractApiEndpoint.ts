@@ -34,23 +34,4 @@ export default abstract class AbstractApiEndpoint {
             items: data
         }
     }
-
-    /**
-     * Parse the pagination url from PaginatedOptions
-     * @param options PaginatedOptions object
-     * @returns string
-     */
-    protected paginatedUrl(options: PaginatedOptions): string {
-        let params: string[] = [];
-
-        if(options.page) {
-            params.push(`page=${options.page}`);
-        }
-
-        if(options.per_page) {
-            params.push(`per_page=${options.per_page}`);
-        }
-
-        return params.length ? `?${params.join("&")}` : "";
-    }
 }

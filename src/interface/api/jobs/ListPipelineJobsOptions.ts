@@ -12,7 +12,7 @@ export interface ListPipelineJobsOptions {
     /**
      * Scope of jobs to show. All jobs are returned if scope is not provided.
      */
-    scope?: "created" | "pending" | "running" | "failed" | "success" | "canceled" | "skipped" | "manual";
+     scope?: "created" | "pending" | "running" | "failed" | "success" | "canceled" | "skipped" | "manual" | ("created" | "pending" | "running" | "failed" | "success" | "canceled" | "skipped" | "manual")[];
 
     /**
      * Include retried jobs in the response. Defaults to false.

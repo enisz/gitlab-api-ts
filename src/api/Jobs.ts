@@ -17,19 +17,21 @@ export class Jobs extends ApiEndpoint {
      * @returns List of jobs in project
      */
     public listProjectJobs(options: ListProjectJobsOptions & PaginatedOptions): Promise<PaginatedResponse<Job>> {
-        return this.getAxios().get(`projects/${options.id}/jobs${this.paginatedUrl(options)}`)
+        const { id, ...endpointOptions } = options;
+
+        return this.getAxios().get(`projects/${id}/jobs`, { params: endpointOptions })
             .then((response: AxiosResponse) => this.paginatedResult<Job>(response.data, response.headers))
     }
 
     /**
      * Get a list of jobs for a pipeline.
      * @param options Query options
-     * @param page Page number to fetch
-     * @param perPage Jobs per page
      * @returns List of jobs in pipeline
      */
     public listPipelineJobs(options: ListPipelineJobsOptions & PaginatedOptions): Promise<PaginatedResponse<Job>> {
-        return this.getAxios().get<Job[]>(`projects/${options.id}/pipelines/${options.pipeline_id}/jobs${this.paginatedUrl(options)}`)
+        const { id, pipeline_id, ...endpointOptions } = options;
+
+        return this.getAxios().get<Job[]>(`projects/${id}/pipelines/${pipeline_id}/jobs`, { params: endpointOptions })
             .then((response: AxiosResponse<Job[]>) => this.paginatedResult<Job>(response.data, response.headers));
     }
 
@@ -39,7 +41,9 @@ export class Jobs extends ApiEndpoint {
      * @returns A job
      */
     public getJob(options: GetJobOptions): Promise<Job> {
-        return this.getAxios().get<Job>(`projects/${options.id}/jobs/${options.job_id}`)
+        const { id, job_id } = options;
+
+        return this.getAxios().get<Job>(`projects/${id}/jobs/${job_id}`)
             .then((response: AxiosResponse<Job>) => response.data);
     }
 
@@ -49,7 +53,9 @@ export class Jobs extends ApiEndpoint {
      * @returns Job log
      */
     public getJobLog(options: GetJobLogOptions): Promise<string> {
-        return this.getAxios().get<string>(`projects/${options.id}/jobs/${options.job_id}/trace`)
+        const { id, job_id } = options;
+
+        return this.getAxios().get<string>(`projects/${id}/jobs/${job_id}/trace`)
             .then((response: AxiosResponse<string>) => response.data);
     }
 }
