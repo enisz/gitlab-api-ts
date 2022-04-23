@@ -1,10 +1,11 @@
-import Axios, { AxiosInstance } from 'axios';
+import Axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 import {
     Jobs,
     Pipelines,
     Users
 } from './api';
+import { TriggeredPipeline } from './interface/api/pipelines/TriggeredPipeline';
 
 export default class GitlabApi {
     private axios: AxiosInstance;
@@ -25,6 +26,7 @@ export default class GitlabApi {
         })
 
         // debug
+        // console.log("[ DEBUG ] ================================ >");
         // this.axios.interceptors.request.use(function (config) {
         //     console.log(config)
         //     return config;

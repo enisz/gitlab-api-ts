@@ -7,9 +7,12 @@ import {
     ListProjectPipelinesOptions,
     Pipeline,
     SinglePipeline,
-    PipelineVariables
+    PipelineVariables,
+    TriggerPipelineOptions
 } from "../interface/api/pipelines";
 import { PaginatedOptions } from "../interface/api/PaginatedOptions";
+import { TriggeredPipeline } from "../interface/api/pipelines/TriggeredPipeline";
+import FormData from 'form-data';
 
 export class Pipelines extends AbstractApiEndpoint {
 
@@ -47,6 +50,28 @@ export class Pipelines extends AbstractApiEndpoint {
 
         return this.getAxios().get<PipelineVariables>(`projects/${id}/pipelines/${pipeline_id}/variables`)
             .then((response: AxiosResponse<PipelineVariables>) => response.data);
+    }
+
+    /**
+     * Triggering a pipeline using a trigger token
+     * @param options TriggeredPipelineOptions
+     * @returns TriggeredPipeline details
+     */
+    public triggerPipeline(options: TriggerPipelineOptions): Promise<TriggeredPipeline> {
+        const {ref, trigger_token, id} = options;
+        let formData = new FormData();
+
+        formData.append("ref", ref);
+        formData.append("token", trigger_token);
+
+        if(options.variables) {
+            for(const key in options.variables) {
+                formData.append(`variables[${key}]`, options.variables[key]);
+            }
+        }
+
+        return this.getAxios().post(`projects/${id}/trigger/pipeline`, formData, { headers: formData.getHeaders() })
+            .then((response: AxiosResponse<TriggeredPipeline>) => response.data);
     }
 
 }
