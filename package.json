@@ -1,6 +1,6 @@
 {
   "name": "gitlab-api-ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wrapper for Gitlab API written in typescript",
   "main": "./dist/index.js",
   "homepage": "https://github.com/enisz/gitlab-api-ts",
