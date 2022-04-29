@@ -2,11 +2,8 @@
   "name": "gitlab-api-ts",
   "version": "1.0.9",
   "description": "Wrapper for Gitlab API written in typescript",
-  "main": "./index.js",
-  "typings": "./index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
+  "typings": "index.d.ts",
   "homepage": "https://github.com/enisz/gitlab-api-ts",
   "repository": {
     "type": "git",
