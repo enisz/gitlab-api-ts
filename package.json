@@ -4,6 +4,7 @@
   "description": "Wrapper for Gitlab API written in typescript",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
+  "files": ["./dist"],
   "homepage": "https://github.com/enisz/gitlab-api-ts",
   "repository": {
     "type": "git",
