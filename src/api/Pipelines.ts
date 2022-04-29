@@ -1,17 +1,15 @@
 import { AxiosResponse } from "axios";
-import { PaginatedResponse } from "../interface/api/PaginatedResponse";
-import AbstractApiEndpoint from "./AbstractApiEndpoint";
-import {
-    GetPipelineOptions,
-    GetPipelineVariablesOptions,
-    ListProjectPipelinesOptions,
-    Pipeline,
-    SinglePipeline,
-    PipelineVariables,
-    TriggerPipelineOptions
-} from "../interface/api/pipelines";
+import { GetPipelineOptions } from "../interface/api/pipelines/GetPipelineOptions";
+import { GetPipelineVariablesOptions } from "../interface/api/pipelines/GetPipelineVariablesOptions";
+import { ListProjectPipelinesOptions } from "../interface/api/pipelines/ListProjectPipelinesOptions";
 import { PaginatedOptions } from "../interface/api/PaginatedOptions";
+import { PaginatedResponse } from "../interface/api/PaginatedResponse";
+import { Pipeline } from "../interface/api/pipelines/Pipeline";
+import { PipelineVariables } from "../interface/api/pipelines/PipelineVariables";
+import { SinglePipeline } from "../interface/api/pipelines/SinglePipeline";
 import { TriggeredPipeline } from "../interface/api/pipelines/TriggeredPipeline";
+import { TriggerPipelineOptions } from "../interface/api/pipelines/TriggerPipelineOptions";
+import AbstractApiEndpoint from "./AbstractApiEndpoint";
 import FormData from 'form-data';
 
 export class Pipelines extends AbstractApiEndpoint {

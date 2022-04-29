@@ -1,5 +1,4 @@
 import { AxiosInstance, AxiosResponseHeaders } from "axios";
-import { PaginatedOptions } from "../interface/api/PaginatedOptions";
 import { PaginatedResponse } from "../interface/api/PaginatedResponse";
 
 export default abstract class AbstractApiEndpoint {

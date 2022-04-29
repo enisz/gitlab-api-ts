@@ -1,11 +1,9 @@
 import { AxiosResponse } from "axios";
-import {
-    GetJobOptions,
-    Job,
-    ListProjectJobsOptions,
-    ListPipelineJobsOptions,
-    GetJobLogOptions,
-} from "../interface/api/jobs";
+import { GetJobLogOptions } from "../interface/api/jobs/GetJobLogOptions";
+import { GetJobOptions } from "../interface/api/jobs/GetJobOptions";
+import { Job } from "../interface/api/jobs/Job";
+import { ListPipelineJobsOptions } from "../interface/api/jobs/ListPipelineJobsOptions";
+import { ListProjectJobsOptions } from "../interface/api/jobs/ListProjectJobsOptions";
 import { PaginatedOptions } from "../interface/api/PaginatedOptions";
 import { PaginatedResponse } from "../interface/api/PaginatedResponse";
 import ApiEndpoint from "./AbstractApiEndpoint";

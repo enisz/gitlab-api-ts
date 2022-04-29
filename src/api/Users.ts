@@ -1,15 +1,12 @@
 import { AxiosResponse } from "axios";
-import { PaginatedOptions } from "../interface/api/PaginatedOptions";
-import AbstractApiEndpoint from "./AbstractApiEndpoint";
-
-import {
-    GetUserOptions,
-    ListUsersOptions,
-    SingleUser,
-    User
-} from "../interface/api/users";
-import { PaginatedResponse } from "../interface/api/PaginatedResponse";
 import { CurrentUser } from "../interface/api/users/CurrentUser";
+import { GetUserOptions } from "../interface/api/users/GetUserOptions";
+import { ListUsersOptions } from "../interface/api/users/ListUsersOptions";
+import { PaginatedOptions } from "../interface/api/PaginatedOptions";
+import { PaginatedResponse } from "../interface/api/PaginatedResponse";
+import { SingleUser } from "../interface/api/users/SingleUser";
+import { User } from "../interface/api/users/User";
+import AbstractApiEndpoint from "./AbstractApiEndpoint";
 
 export class Users extends AbstractApiEndpoint {
 
