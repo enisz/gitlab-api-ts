@@ -68,12 +68,7 @@ export class Pipelines extends AbstractApiEndpoint {
             }
         }
 
-        console.log(formData);
-        console.log(typeof formData);
-        console.log(formData.getHeaders);
-        console.log(typeof formData.getHeaders);
-
-        return this.getAxios().post(`projects/${id}/trigger/pipeline`, formData, { headers: typeof formData.getHeaders !== undefined ? formData.getHeaders() : undefined  })
+        return this.getAxios().post(`projects/${id}/trigger/pipeline`, formData, { headers: typeof formData.getHeaders !== "undefined" ? formData.getHeaders() : undefined  })
             .then((response: AxiosResponse<TriggeredPipeline>) => response.data);
     }
 
