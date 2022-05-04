@@ -1,13 +1,10 @@
 import { AxiosResponse } from "axios";
 import { CreateTriggerOptions } from "../interface/api/pipeline-triggers/CreateTriggerOptions";
-import { CreateTriggerResponse } from "../interface/api/pipeline-triggers/CreateTriggerResponse";
 import { GetTriggerDetailsOptions } from "../interface/api/pipeline-triggers/GetTriggerDetailsOptions";
-import { GetTriggerDetailsResponse } from "../interface/api/pipeline-triggers/GetTriggerDetailsResponse";
 import { ListProjectTriggersOptions } from "../interface/api/pipeline-triggers/ListProjectTriggersOptions";
-import { ListProjectTriggersResponse } from "../interface/api/pipeline-triggers/ListProjectTriggersResponse";
 import { RemoveTriggerOptions } from "../interface/api/pipeline-triggers/RemoveTriggerOptions";
+import { TriggerDetails } from "../interface/api/pipeline-triggers/TriggerDetails";
 import { UpdateTriggerOptions } from "../interface/api/pipeline-triggers/UpdateTriggerOptions";
-import { UpdateTriggerResponse } from "../interface/api/pipeline-triggers/UpdateTriggerResponse";
 import AbstractApiEndpoint from "./AbstractApiEndpoint";
 
 export class PipelineTriggers extends AbstractApiEndpoint {
@@ -15,49 +12,49 @@ export class PipelineTriggers extends AbstractApiEndpoint {
     /**
      * Get a list of project’s build triggers.
      * @param options ListProjectTriggersOptions
-     * @returns ListProjectTriggersResponse[]
+     * @returns TriggerDetails[]
      */
-    public listProjectTriggers(options: ListProjectTriggersOptions): Promise<ListProjectTriggersResponse[]> {
+    public listProjectTriggers(options: ListProjectTriggersOptions): Promise<TriggerDetails[]> {
         const { id } = options;
 
-        return this.getAxios().get<ListProjectTriggersResponse[]>(`projects/${id}/triggers`)
-            .then((response: AxiosResponse<ListProjectTriggersResponse[]>) => response.data);
+        return this.getAxios().get<TriggerDetails[]>(`projects/${id}/triggers`)
+            .then((response: AxiosResponse<TriggerDetails[]>) => response.data);
     }
 
     /**
      * Get details of project’s build trigger.
      * @param options GetTriggerDetailsOptions
-     * @returns GetTriggerDetailsResponse
+     * @returns TriggerDetails
      */
-    public getTriggerDetails(options: GetTriggerDetailsOptions): Promise<GetTriggerDetailsResponse> {
+    public getTriggerDetails(options: GetTriggerDetailsOptions): Promise<TriggerDetails> {
         const { id, trigger_id } = options;
 
-        return this.getAxios().get<GetTriggerDetailsResponse>(`projects/${id}/triggers/${trigger_id}`)
-            .then((response: AxiosResponse<GetTriggerDetailsResponse>) => response.data);
+        return this.getAxios().get<TriggerDetails>(`projects/${id}/triggers/${trigger_id}`)
+            .then((response: AxiosResponse<TriggerDetails>) => response.data);
     }
 
     /**
      * Create a trigger for a project.
      * @param options CreateTriggerOptions
-     * @returns CreateTriggerResponse
+     * @returns TriggerDetails
      */
-    public createTrigger(options: CreateTriggerOptions): Promise<CreateTriggerResponse> {
+    public createTrigger(options: CreateTriggerOptions): Promise<TriggerDetails> {
         const { id, description } = options;
 
-        return this.getAxios().post<CreateTriggerResponse>(`projects/${id}/triggers`, { description: description })
-            .then((response: AxiosResponse<CreateTriggerResponse>) => response.data);
+        return this.getAxios().post<TriggerDetails>(`projects/${id}/triggers`, { description: description })
+            .then((response: AxiosResponse<TriggerDetails>) => response.data);
     }
 
     /**
      * Update a trigger for a project.
      * @param options UpdateTriggerOptions
-     * @returns UpdateTriggerResponse
+     * @returns TriggerDetails
      */
-    public updateTrigger(options: UpdateTriggerOptions): Promise<UpdateTriggerResponse> {
+    public updateTrigger(options: UpdateTriggerOptions): Promise<TriggerDetails> {
         const {id, trigger_id, description } = options;
 
-        return this.getAxios().put<UpdateTriggerResponse>(`projects/${id}/triggers/${trigger_id}`, { description: description })
-            .then((response: AxiosResponse<UpdateTriggerResponse>) => response.data);
+        return this.getAxios().put<TriggerDetails>(`projects/${id}/triggers/${trigger_id}`, { description: description })
+            .then((response: AxiosResponse<TriggerDetails>) => response.data);
     }
 
     /**

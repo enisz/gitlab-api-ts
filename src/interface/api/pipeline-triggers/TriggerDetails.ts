@@ -1,4 +1,4 @@
-export interface UpdateTriggerResponse {
+export interface TriggerDetails {
     id: number;
     token: string;
     description: string;
