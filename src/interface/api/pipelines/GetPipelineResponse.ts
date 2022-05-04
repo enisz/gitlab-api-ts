@@ -1,6 +1,6 @@
-import { Pipeline } from "./Pipeline";
+import { ListProjectPipelineResponse } from "./ListProjectPipelineResponse";
 
-export interface SinglePipeline extends Pipeline {
+export interface GetPipelineResponse extends ListProjectPipelineResponse {
     before_sha: string;
     tag: boolean;
     yaml_errors: string[];

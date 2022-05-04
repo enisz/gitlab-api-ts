@@ -1,5 +1,6 @@
 import { Jobs } from './api/Jobs';
 import { Pipelines } from './api/Pipelines';
+import { PipelineTriggers } from './api/PipelineTriggers';
 import { Users } from './api/Users';
 import Axios, { AxiosInstance } from 'axios';
 
@@ -9,6 +10,7 @@ export default class GitlabApi {
     // api endpoints
     private jobs!: Jobs
     private pipelines!: Pipelines;
+    private pipelineTriggers!: PipelineTriggers;
     private users!: Users;
 
     public constructor(apiUrl: string, accessToken: string) {
@@ -32,6 +34,18 @@ export default class GitlabApi {
         }
 
         return this.pipelines;
+    }
+
+    /**
+     * Gettint Pipeline Triggers API
+     * @returns Pipeline Triggers API
+     */
+    public getPipelineTriggersApi(): PipelineTriggers {
+        if(!this.pipelineTriggers) {
+            this.pipelineTriggers = new PipelineTriggers(this.axios);
+        }
+
+        return this.pipelineTriggers;
     }
 
     /**

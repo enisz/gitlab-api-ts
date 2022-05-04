@@ -1,4 +1,4 @@
-export interface PipelineVariable {
+export interface GetPipelineVariablesResponse {
     key: string;
     variable_type?: string;
     value:  string;

@@ -1,4 +1,4 @@
-export interface Pipeline {
+export interface ListProjectPipelineResponse {
     id: number;
     iid: number;
     project_id: number;

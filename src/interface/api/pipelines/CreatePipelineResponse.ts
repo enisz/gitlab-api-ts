@@ -1,4 +1,4 @@
-export interface TriggeredPipeline {
+export interface CreatePipelineResponse {
     id: number;
     iid: number;
     project_id: number;
