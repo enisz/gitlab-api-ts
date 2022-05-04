@@ -43,11 +43,11 @@ export class Pipelines extends AbstractApiEndpoint {
      * @param options Query options
      * @returns Variables of a pipeline
      */
-    public getPipelineVariables(options: GetPipelineVariablesOptions): Promise<PipelineVariables> {
+    public getPipelineVariables(options: GetPipelineVariablesOptions): Promise<PipelineVariables[]> {
         const { id, pipeline_id } = options;
 
-        return this.getAxios().get<PipelineVariables>(`projects/${id}/pipelines/${pipeline_id}/variables`)
-            .then((response: AxiosResponse<PipelineVariables>) => response.data);
+        return this.getAxios().get<PipelineVariables[]>(`projects/${id}/pipelines/${pipeline_id}/variables`)
+            .then((response: AxiosResponse<PipelineVariables[]>) => response.data);
     }
 
     /**
