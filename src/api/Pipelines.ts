@@ -5,7 +5,7 @@ import { ListProjectPipelinesOptions } from "../interface/api/pipelines/ListProj
 import { PaginatedOptions } from "../interface/api/PaginatedOptions";
 import { PaginatedResponse } from "../interface/api/PaginatedResponse";
 import { Pipeline } from "../interface/api/pipelines/Pipeline";
-import { PipelineVariables } from "../interface/api/pipelines/PipelineVariables";
+import { PipelineVariable } from "../interface/api/pipelines/PipelineVariable";
 import { SinglePipeline } from "../interface/api/pipelines/SinglePipeline";
 import { TriggeredPipeline } from "../interface/api/pipelines/TriggeredPipeline";
 import { TriggerPipelineOptions } from "../interface/api/pipelines/TriggerPipelineOptions";
@@ -43,11 +43,11 @@ export class Pipelines extends AbstractApiEndpoint {
      * @param options Query options
      * @returns Variables of a pipeline
      */
-    public getPipelineVariables(options: GetPipelineVariablesOptions): Promise<PipelineVariables[]> {
+    public getPipelineVariables(options: GetPipelineVariablesOptions): Promise<PipelineVariable[]> {
         const { id, pipeline_id } = options;
 
-        return this.getAxios().get<PipelineVariables[]>(`projects/${id}/pipelines/${pipeline_id}/variables`)
-            .then((response: AxiosResponse<PipelineVariables[]>) => response.data);
+        return this.getAxios().get<PipelineVariable[]>(`projects/${id}/pipelines/${pipeline_id}/variables`)
+            .then((response: AxiosResponse<PipelineVariable[]>) => response.data);
     }
 
     /**
